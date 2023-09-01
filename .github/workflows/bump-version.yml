@@ -1,8 +1,8 @@
 name: Create PR for bump version
 on:
   push:
-    # branches:
-    #   - devel
+    branches:
+      - devel
 jobs:
   update-version-pr:
     name: Install dependancies
@@ -34,4 +34,7 @@ jobs:
           labels: release
           assignees: |
             saorio
-
+      - name: automerge
+        uses: "pascalgn/automerge-action@v0.15.6"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
